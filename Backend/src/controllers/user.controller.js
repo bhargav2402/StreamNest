@@ -75,8 +75,8 @@ const registerUser = asyncHandler(async (req, res) => {
     if (!createdUser) return res.status(500).json( new ApiResponse(500, "Something went wrong while registering the user"))
 
     return res.status(201)
-    .cookie("accessToken", accessToken)
-    .cookie("refreshToken", refreshToken)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
     .json(new ApiResponse(200, createdUser, "User Registered successfully!!"))
 })
 
@@ -106,7 +106,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 }
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
-const options = { httpOnly: true, secure: true }
+const options = { httpOnly: true, secure: true, sameSite: 'None' }
 
 // Login and Logout using Postman vscode extension DOESN'T SEND COOKIES! Use Postman application!!
 const loginUser = asyncHandler(async (req, res) => {
@@ -134,8 +134,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
     return res.status(200)
-        .cookie("accessToken", accessToken)
-        .cookie("refreshToken", refreshToken)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
         .json(
             new ApiResponse(
                 200,
@@ -186,8 +186,8 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
 
         return res.status(200)
-            .cookie("accessToken", accessToken)
-            .cookie("refreshToken", refreshToken)
+            .cookie("accessToken", accessToken, options)
+            .cookie("refreshToken", refreshToken, options)
             .json(
                 new ApiResponse(
                     200,
