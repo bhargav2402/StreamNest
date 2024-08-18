@@ -34,7 +34,7 @@ export default function SignIn() {
         console.log(formData);
 
         // Form submission logic here
-        axios.post("https://stream-nest.vercel.app/api/users/login", formData)
+        axios.post("https://streamnest-3hxb.onrender.com/api/users/login", formData)
             .then((res) => {
                 let userDetails = res.data.data.user
                 Cookies.set("user", JSON.stringify(userDetails))

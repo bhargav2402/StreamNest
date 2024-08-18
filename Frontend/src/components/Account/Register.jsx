@@ -34,7 +34,7 @@ export default function Register() {
         data.append("avatar", avatarFile)
         data.append("coverImage", coverImageFile)
 
-        axios.post("https://stream-nest.vercel.app/api/users/register", data)
+        axios.post("https://streamnest-3hxb.onrender.com/api/users/register", data)
         .then(res => {
             let userDetails = res.data.data
             Cookies.set("user", JSON.stringify(userDetails))

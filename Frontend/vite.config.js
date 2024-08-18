@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    proxy : "https://stream-nest.vercel.app"
+    proxy : "https://streamnest-3hxb.onrender.com"
   },
   plugins: [react()],
 })
