@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({                              // express uses .use for using middlewares
-    origin: "https://stream-nest-ksrr.vercel.app",        // allow requests from the specified origin
+    origin:"https://streamnest-1.onrender.com",        // allow requests from the specified origin
     credentials: true                       // cookies to be included in cross-origin requests.
 }))
 
