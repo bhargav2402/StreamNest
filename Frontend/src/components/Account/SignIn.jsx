@@ -38,8 +38,9 @@ export default function SignIn() {
             .then((res) => {
                 let userDetails = res.data.data.user
                 Cookies.set("user", JSON.stringify(userDetails))
-                Cookies.set("accessToken", JSON.stringify(res.data.data.accessToken))
-                Cookies.set("refreshToken", JSON.stringify(res.data.data.refreshToken))
+                // Cookies.set("accessToken", JSON.stringify(res.data.data.accessToken))
+                // Cookies.set("refreshToken", JSON.stringify(res.data.data.refreshToken))
+                console.log("Received response:", res.data.data);
                 navigate("/")   // Redirect to home page
             })
             .catch(error => setErrorMessage(error.response.data.data))
