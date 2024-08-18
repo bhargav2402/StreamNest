@@ -34,7 +34,7 @@ export default function NewVideo() {
         if (thumbnail) formData.append('thumbnail', thumbnail);
         if (videoFile) formData.append('videoFile', videoFile);
 
-        axios.post('https://streamnest-3hxb.onrender.com/api/video/new', formData)
+        axios.post('https://stream-nest.vercel.app/api/video/new', formData)
             .then((res) => {
                 setTimeout(() => {
                     showCustomAlert('Video uploaded')
