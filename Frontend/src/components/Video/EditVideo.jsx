@@ -31,7 +31,7 @@ export default function EditVideo() {
 
     useEffect(() => {
         if (editMode) {
-            axios.get(`/api/video/details/${videoId}`)
+            axios.get(`https://streamnest-3hxb.onrender.com/video/details/${videoId}`)
                 .then((res) => {
                     const videoDetails = res.data.data;
                     console.log(videoDetails);
@@ -84,7 +84,7 @@ export default function EditVideo() {
         let data = Array.from(formData.keys())                      // Converts the formData.key iterator to Array and checks if anything has been updated       
 
         if (data) {
-            axios.patch(`/api/video/v/${videoId}`, formData)
+            axios.patch(`https://streamnest-3hxb.onrender.com/video/v/${videoId}`, formData)
             .then((res) => {
                 navigate(-1)
                 setTimeout(() => {

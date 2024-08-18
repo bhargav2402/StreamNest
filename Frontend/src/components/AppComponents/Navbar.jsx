@@ -28,7 +28,7 @@ export default function Navbar() {
     const user = JSON.parse(Cookies.get("user"))
 
     const logout = () => {
-        axios.post("/api/users/logout")
+        axios.post("https://streamnest-3hxb.onrender.com/users/logout")
             .then(res => navigate("/signin"))
             .catch(e => console.log(e))
     }
