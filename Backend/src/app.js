@@ -17,7 +17,10 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))    // Accept data f
 app.use(express.static("public"))           // To store static files like images,etc param:folder_name
 
 app.use(cookieParser())                     // To set and edit cookies
-
+app.get("/", (req, res) => {
+    res.json("Hello").send("hello")
+    
+})
 
 // Routes
 import userRouter from "./routes/user.routes.js"
