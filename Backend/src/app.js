@@ -5,9 +5,10 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({
-    origin: 'https://stream-nest.vercel.app/',
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
   }));
 
 // To handle data
