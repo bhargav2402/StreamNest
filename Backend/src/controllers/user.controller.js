@@ -132,10 +132,12 @@ const loginUser = asyncHandler(async (req, res) => {
 
     // Optional step: fetching details without passsword and tokens
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
-
+    console.log(accessToken,refreshToken)
+    
     return res.status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
+        
         .json(
             new ApiResponse(
                 200,
