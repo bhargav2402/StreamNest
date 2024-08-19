@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({                              // express uses .use for using middlewares
-    origin:["http://localhost:5173/", "https://streamnest-1.onrender.com"],        // allow requests from the specified origin
+    origin:"http://localhost:5173/" ,      // allow requests from the specified origin
     credentials: true,
                         // cookies to be included in cross-origin requests.
 }))
@@ -19,13 +19,7 @@ app.use(express.static("public"))           // To store static files like images
 
 app.use(cookieParser())                         // To set and edit cookies
                    
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"),  // all accepted
-        res.header(
-            "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"
-        )
-    next()
- })
+
 
 // Routes
 import userRouter from "./routes/user.routes.js"
