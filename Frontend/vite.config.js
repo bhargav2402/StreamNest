@@ -7,9 +7,7 @@ dotenv.config()
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    proxy : {
-      "/api" : "https://streamnest-3hxb.onrender.com"
-    }
+    proxy : "https://streamnest-3hxb.onrender.com"
   },
   plugins: [react()],
 })

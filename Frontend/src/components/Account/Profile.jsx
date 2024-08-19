@@ -19,7 +19,7 @@ export default function Profile() {
     const avatarRef = useRef()
 
     useEffect(() => {
-        axios.get("/api/users/current_user")
+        axios.get("https://streamnest-3hxb.onrender.com/users/current_user")
             .then(res => {
                 setUser(res.data.data)
                 setFormData({
@@ -45,7 +45,7 @@ export default function Profile() {
         // Check if any changes made to fullname or email
         if (formData.fullname !== user.fullname || formData.email !== user.email) {
 
-            axios.patch("/api/users/update_details", {
+            axios.patch("https://streamnest-3hxb.onrender.com/users/update_details", {
                 fullname: formData.fullname,
                 email: formData.email
             })
@@ -59,7 +59,7 @@ export default function Profile() {
 
         // Change password
         if (formData.oldPassword && formData.newPassword) {
-            axios.patch("/api/users/change_password", {
+            axios.patch("https://streamnest-3hxb.onrender.com/users/change_password", {
                 oldPassword: formData.oldPassword,
                 newPassword: formData.newPassword
             })
@@ -73,7 +73,7 @@ export default function Profile() {
             const form = new FormData()
             form.append("avatar", avatarFile)
 
-            axios.patchForm("/api/users/update_avatar", {
+            axios.patchForm("https://streamnest-3hxb.onrender.com/users/update_avatar", {
                 "avatar": avatarFile
             })
                 .then(res => setUser(user => ({ ...user, avatar: res.data.data.avatar })))
@@ -85,7 +85,7 @@ export default function Profile() {
             const form = new FormData()
             form.append("covImg", covImgFile)
 
-            axios.patchForm("/api/users/update_cover_image", {
+            axios.patchForm("https://streamnest-3hxb.onrender.com/users/update_cover_image", {
                 "coverImage": covImgFile
             })
                 .then(res => setUser(user => ({ ...user, coverImage: res.data.data.coverImage })))

@@ -24,11 +24,11 @@ export default function Channel() {
     useEffect(() => {
         const id = !channelId ? currentUser._id : channelId
 
-        axios.get(`/api/users/channel/${id}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/users/channel/${id}`)
             .then(res => setUser(res.data.data))
             .catch(error => error.response.status >= 500 ? navigate(-1) : console.log(error.response.data))
 
-        axios.get(`/api/dashboard/stats/${id}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/dashboard/stats/${id}`)
             .then(res => {
                 setUserStats(res.data.data)
                 setLoading(false)
@@ -37,7 +37,7 @@ export default function Channel() {
     }, [])
 
     const toggleSub = () => {
-        axios.post(`/api/subscription/channel/${user._id}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/subscription/channel/${user._id}`)
             .then(res => {
                 setUser({ ...user, isSubscribed: !user.isSubscribed })
                 setUserStats({ ...userStats, totalSubscribers: (res.data.data == null ? --userStats.totalSubscribers : ++userStats.totalSubscribers) })
