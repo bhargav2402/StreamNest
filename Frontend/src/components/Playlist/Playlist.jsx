@@ -25,7 +25,7 @@ export default function Playlist() {
 
     useEffect(() => {
 
-        axios.get(`https://streamnest.onrender.com/api/playlist/${id}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/playlist/${id}`)
             .then(res => {
                 const plst = res.data.data;
                 setPlaylist(plst);
@@ -38,7 +38,7 @@ export default function Playlist() {
     }, []);
 
     const removeVideo = (vidId) => {
-        axios.delete(`https://streamnest.onrender.com/api/playlist/video/${vidId}/${id}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/playlist/video/${vidId}/${id}`)
             .then(res => {
                 setPlaylist({ ...playlist, videos: playlist.videos.filter(vid => vid._id != vidId) })
             })
@@ -46,7 +46,7 @@ export default function Playlist() {
     };
 
     const deletePlaylist = () => {
-        axios.delete(`https://streamnest.onrender.com/api/playlist/${playlist._id}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/playlist/${playlist._id}`)
         navigate(-1)
         setTimeout(() => {
             showCustomAlert('Playlist Deleted');
@@ -54,7 +54,7 @@ export default function Playlist() {
     };
 
     const saveChanges = () => {
-        axios.post(`https://streamnest.onrender.com/api/playlist/${playlist._id}`, { name: newTitle, description: newDescription })
+        axios.post(`https://streamnest-3hxb.onrender.com/api/playlist/${playlist._id}`, { name: newTitle, description: newDescription })
             .then(res => {
                 setPlaylist({ ...playlist, title: res.data.data.name, description: res.data.data.description });
                 setEditMode(false);

@@ -20,7 +20,7 @@ export default function Playlists({ channelId = "" }) {
     let [desc, setDesc] = useState("")
 
     useEffect(() => {
-        axios.get(`https://streamnest.onrender.com/api/playlist/user/${userId}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/playlist/user/${userId}`)
             .then((res) => {
                 setPlaylists(res.data.data)
                 setLoading(false)
@@ -31,7 +31,7 @@ export default function Playlists({ channelId = "" }) {
 
     const deletePlaylist = (e, id) => {
         e.stopPropagation()
-        axios.delete(`https://streamnest.onrender.com/api/playlist/${id}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/playlist/${id}`)
         console.log("Deleted playlist");
         setPlaylists(playlists.filter(pst => pst._id !== id))
     }
@@ -41,7 +41,7 @@ export default function Playlists({ channelId = "" }) {
 
         if (!(name.trim())) return console.log("Enter name");
 
-        axios.post(`https://streamnest.onrender.com/api/playlist`, { name, description: desc })
+        axios.post(`https://streamnest-3hxb.onrender.com/api/playlist`, { name, description: desc })
             .then(res => {
                 setPlaylists([...playlists, res.data.data])
                 setName("")

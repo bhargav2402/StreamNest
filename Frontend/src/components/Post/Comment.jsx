@@ -17,7 +17,7 @@ export default function Comment({ id, content, updatedAt, likes, isLiked, fullna
 
         if ((newContent !== content) && newContent.trim() && newContent) {
 
-            axios.post(`https://streamnest.onrender.com/api/comment/c/${id}`, { content: newContent })
+            axios.post(`https://streamnest-3hxb.onrender.com/api/comment/c/${id}`, { content: newContent })
                 .then((res) => content = res.data.data.content)
                 .catch(error => console.log(error))
         } else {

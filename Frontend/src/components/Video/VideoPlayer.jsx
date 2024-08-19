@@ -22,7 +22,7 @@ function VideoPage() {
 
     // Load Video and comments
     useEffect(() => {
-        axios.get(`https://streamnest.onrender.com/api/video/v/${videoId}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/video/v/${videoId}`)
             .then((res) => {
                 const videoDetails = res.data.data[0]
                 setVideo(videoDetails);
@@ -30,18 +30,18 @@ function VideoPage() {
             })
             .catch(error => console.log(error.response.data));
 
-        axios.get(`https://streamnest.onrender.com/api/comment/video/${videoId}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/comment/video/${videoId}`)
             .then((res) => setComments(res.data.data.docs))
             .catch(error => console.log(error.response.data));
 
-        axios.post(`https://streamnest.onrender.com/api/watchHistory/track/${videoId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/watchHistory/track/${videoId}`)
             .catch(error => console.log(error.response.data));
 
     }, [videoId])
 
     // Subscribe/ unsubscribe
     const toggleSub = () => {
-        axios.post(`https://streamnest.onrender.com/api/subscription/channel/${video.owner._id}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/subscription/channel/${video.owner._id}`)
             .then(res => {
                 setVideo({
                     ...video,
@@ -54,7 +54,7 @@ function VideoPage() {
 
     // Like / unlike video
     const toggleVideoLike = () => {
-        axios.post(`https://streamnest.onrender.com/api/like/v/${videoId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/like/v/${videoId}`)
             .then((res) => setVideo(
                 video => ({
                     ...video,
@@ -69,7 +69,7 @@ function VideoPage() {
     const addComment = () => {
         if (content && content.trim()) {
 
-            axios.post(`https://streamnest.onrender.com/api/comment/video/${videoId}`, { content })
+            axios.post(`https://streamnest-3hxb.onrender.com/api/comment/video/${videoId}`, { content })
                 .then((res) => {
                     setComments([...comments, {
                         ...res.data.data,
@@ -88,14 +88,14 @@ function VideoPage() {
 
     // Delete comment
     const deleteComment = (id) => {
-        axios.delete(`https://streamnest.onrender.com/api/comment/c/${id}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/comment/c/${id}`)
             .then((res) => setComments(comments => comments.filter(com => com._id !== id)))
             .catch(error => console.log(error))
     }
 
     // Toggle comment like
     const toggleCommentLike = (commentId) => {
-        axios.post(`https://streamnest.onrender.com/api/like/c/${commentId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/like/c/${commentId}`)
             .then((res) => setComments(
                 comments => comments.map(comment =>
                     comment._id === commentId ? {
@@ -113,7 +113,7 @@ function VideoPage() {
         setIsModalOpen(!isModalOpen);
         if (!isModalOpen) {
             // Fetch playlists only when opening the modal
-            axios.get(`https://streamnest.onrender.com/api/playlist/user/${currentUser._id}`)
+            axios.get(`https://streamnest-3hxb.onrender.com/api/playlist/user/${currentUser._id}`)
                 .then((res) => setPlaylists(res.data.data))
                 .catch(error => console.log(error.response.data));
         }
@@ -122,7 +122,7 @@ function VideoPage() {
 
     // Add video to selected playlist
     const addToPlaylist = (playlistId) => {
-        axios.post(`https://streamnest.onrender.com/api/playlist/video/${videoId}/${playlistId}`,)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/playlist/video/${videoId}/${playlistId}`,)
             .then(res => {
                 console.log('Video added to playlist');
                 setIsModalOpen(false);  // Close the modal after adding
