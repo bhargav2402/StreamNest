@@ -34,7 +34,7 @@ export default function SignIn() {
         console.log(formData);
 
         // Form submission logic here
-        axios.post("https://streamnest.onrender.com/api/users/login", formData)
+        axios.post("/api/users/login", formData)
             .then((res) => {
                 let userDetails = res.data.data.user
                 Cookies.set("user", JSON.stringify(userDetails))

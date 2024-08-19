@@ -4,11 +4,11 @@ import cookieParser from "cookie-parser"
 
 const app = express()
 
-app.use(cors({                              // express uses .use for using middlewares
-    origin:"http://localhost:5173/" ,         // allow requests from the specified origin
-    credentials: true,
-                        // cookies to be included in cross-origin requests.
-}))
+app.use(cors({
+    origin: 'https://stream-nest.vercel.app/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 
 // To handle data
 app.use(express.json({limit: "16kb"}))      // To accept json data of certain limit

@@ -11,7 +11,7 @@ export default function Subscriptions() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get(`https://streamnest.onrender.com/api/subscription`)
+        axios.get(`/api/subscription`)
             .then(res => {
                 setSubs(res.data.data)
                 setLoading(false)
@@ -22,7 +22,7 @@ export default function Subscriptions() {
 
     const unsubscribe = (e, id) => {
         e.stopPropagation()
-        axios.post(`https://streamnest.onrender.com/api/subscription/channel/${id}`)
+        axios.post(`/api/subscription/channel/${id}`)
             .then(res => {
                 //alert
                 setSubs(subs => subs.filter(sub => sub.subscribedTo._id !== id))
