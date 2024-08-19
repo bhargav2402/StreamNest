@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser"
 const app = express()
 
 app.use(cors({                              // express uses .use for using middlewares
-    origin:"http://localhost:5173/" ,      // allow requests from the specified origin
+    origin:"http://localhost:5173/" ,         // allow requests from the specified origin
     credentials: true,
                         // cookies to be included in cross-origin requests.
 }))

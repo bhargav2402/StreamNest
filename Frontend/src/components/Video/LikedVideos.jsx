@@ -10,7 +10,7 @@ export default function LikedVideos() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get("https://streamnest-3hxb.onrender.com/api/like/likedVideos")
+        axios.get("https://streamnest.onrender.com/api/like/likedVideos")
             .then((res) => {
                 setVideos(res.data.data)
                 setLoading(false)
@@ -19,7 +19,7 @@ export default function LikedVideos() {
     }, []);
 
     const dislike = (id) => {
-        axios.post(`https://streamnest-3hxb.onrender.com/api/like/v/${id}`)
+        axios.post(`https://streamnest.onrender.com/api/like/v/${id}`)
             .then((res) => {
                 setVideos(videos.filter(vid => vid.videos[0]._id !== id));
             })

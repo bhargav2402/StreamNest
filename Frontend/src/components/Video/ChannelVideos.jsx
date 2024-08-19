@@ -19,7 +19,7 @@ export default function ChannelVideos({ owner }) {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://streamnest-3hxb.onrender.com/api/dashboard/videos/${owner._id}`)
+        axios.get(`https://streamnest.onrender.com/api/dashboard/videos/${owner._id}`)
             .then((res) =>{
                  setVideos(res.data.data)
                  setLoading(false);                 // Set loading to false after data is fetched
@@ -28,7 +28,7 @@ export default function ChannelVideos({ owner }) {
     }, []);
     
     const deleteVideo = (vidId) => {
-        axios.delete(`https://streamnest-3hxb.onrender.com/api/video/v/${vidId}`)
+        axios.delete(`https://streamnest.onrender.com/api/video/v/${vidId}`)
             .then((res) => {
                 setVideos(videos => videos.filter(vid => vid._id !== vidId))
                 setTimeout(() => {
