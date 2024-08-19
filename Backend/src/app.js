@@ -6,7 +6,10 @@ const app = express()
 
 app.use(cors({                              // express uses .use for using middlewares
     origin:"https://streamnest-1.onrender.com",        // allow requests from the specified origin
-    credentials: true                       // cookies to be included in cross-origin requests.
+    credentials: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed methods
+    allowedHeaders: 'Content-Type, Authorization', // Allowed headers
+    exposedHeaders: 'Set-Cookie',                       // cookies to be included in cross-origin requests.
 }))
 
 // To handle data
