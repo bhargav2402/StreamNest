@@ -10,7 +10,7 @@ export default function WatchHistory() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get("/api/watchHistory/")
+        axios.get("https://streamnest.onrender.com/api/watchHistory/")
             .then((res) => {
                 setHistory(groupVideosByDate(res.data.data));
                 setLoading(false);
@@ -19,7 +19,7 @@ export default function WatchHistory() {
     }, []);
 
     const remove = (id) => {
-        axios.delete(`/api/watchHistory/remove/${id}`)
+        axios.delete(`https://streamnest.onrender.com/api/watchHistory/remove/${id}`)
             .then(() => {
                 // Filter out the removed video from the history state
                 setHistory(history.map(dateGroup => ({

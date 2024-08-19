@@ -13,7 +13,7 @@ export default function Subscribers({ channelId = "" }) {
     const [subscribers, setSubscribers] = useState([])
 
     useEffect(() => {
-        axios.get(`/api/subscription/channel/${id}`)
+        axios.get(`https://streamnest.onrender.com/api/subscription/channel/${id}`)
             .then(res => {
                 setSubscribers(res.data.data)
                 setLoading(false)
