@@ -17,7 +17,7 @@ export default function PostList({ channelId = "", owner }) {
     const id = channelId === "" ? currentUser._id : channelId;
 
     useEffect(() => {
-        axios.get(`https://streamnest-3hxb.onrender.com/post/user/${id}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/post/user/${id}`)
             .then((res) => {
                 setPosts(res.data.data)
                 setLoading(false)
@@ -28,7 +28,7 @@ export default function PostList({ channelId = "", owner }) {
     const togglePostLike = (e, postId) => {
         e.stopPropagation()
 
-        axios.post(`https://streamnest-3hxb.onrender.com/like/p/${postId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/like/p/${postId}`)
             .then((res) => setPosts(
                 posts => posts.map(post =>
                     post._id === postId ? {

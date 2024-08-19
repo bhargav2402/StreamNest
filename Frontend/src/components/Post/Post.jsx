@@ -22,14 +22,14 @@ export default function PostItem() {
     const [content, setContent] = useState()
 
     useEffect(() => {
-        axios.get(`https://streamnest-3hxb.onrender.com/post/${postId}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/post/${postId}`)
             .then((res) => {
                 setPost(res.data.data)
                 setLoading(false)
             })
             .catch(error => error.response.status >= 500 ? navigate(-1) : console.log(error));
 
-        axios.get(`https://streamnest-3hxb.onrender.com/comment/post/${postId}`)
+        axios.get(`https://streamnest-3hxb.onrender.com/api/comment/post/${postId}`)
             .then((res) => setComments(res.data.data.docs))
             .catch(error => console.log(error));
     }, []);
@@ -37,7 +37,7 @@ export default function PostItem() {
     const togglePostLike = (e) => {
         e.stopPropagation()
 
-        axios.post(`https://streamnest-3hxb.onrender.com/like/p/${postId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/like/p/${postId}`)
             .then((res) => setPost(
                 post => ({
                     ...post,
@@ -49,7 +49,7 @@ export default function PostItem() {
     }
 
     const toggleCommentLike = (commentId) => {
-        axios.post(`https://streamnest-3hxb.onrender.com/like/c/${commentId}`)
+        axios.post(`https://streamnest-3hxb.onrender.com/api/like/c/${commentId}`)
             .then((res) => setComments(
                 comments => comments.map(comment =>
                     comment._id === commentId ? {
@@ -64,7 +64,7 @@ export default function PostItem() {
 
     const deletePost = () => {
 
-        axios.delete(`https://streamnest-3hxb.onrender.com/post/${postId}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/post/${postId}`)
             .then((res) => {
                 navigate(-1)
                 setTimeout(() => {
@@ -77,7 +77,7 @@ export default function PostItem() {
     const addComment = () => {
         if (content && content.trim()) {
 
-            axios.post(`https://streamnest-3hxb.onrender.com/comment/post/${postId}`, { content })
+            axios.post(`https://streamnest-3hxb.onrender.com/api/comment/post/${postId}`, { content })
                 .then((res) => {
                     setComments([...comments, {
                         ...res.data.data, 
@@ -94,7 +94,7 @@ export default function PostItem() {
         }
     }
     const deleteComment = (id) => {
-        axios.delete(`https://streamnest-3hxb.onrender.com/comment/c/${id}`)
+        axios.delete(`https://streamnest-3hxb.onrender.com/api/comment/c/${id}`)
         .then((res) => setComments(comments => comments.filter(com => com._id !== id)))
         .catch(error => console.log(error))
     }
