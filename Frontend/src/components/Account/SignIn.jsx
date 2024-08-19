@@ -34,16 +34,14 @@ export default function SignIn() {
         console.log(formData);
 
         // Form submission logic here
-        axios.post("https://streamnest-3hxb.onrender.com/api/users/login", formData)
+        axios.post("/api/users/login", formData)
             .then((res) => {
                 let userDetails = res.data.data.user
                 Cookies.set("user", JSON.stringify(userDetails))
-                // Cookies.set("accessToken", JSON.stringify(res.data.data.accessToken))
-                // Cookies.set("refreshToken", JSON.stringify(res.data.data.refreshToken))
-                console.log("Received response:", res.data.data);
+
                 navigate("/")   // Redirect to home page
             })
-            .catch(error => setErrorMessage(error.response.data.data))
+            .catch(error => console.log(error))
     };
 
     return (

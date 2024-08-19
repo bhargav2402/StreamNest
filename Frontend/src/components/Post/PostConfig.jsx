@@ -24,7 +24,7 @@ export default function PostConfig() {
 
     useEffect(() => {
         if (editMode) {
-            axios.get(`https://streamnest-3hxb.onrender.com/api/post/${postId}`)  // To edit post
+            axios.get(`/api/post/${postId}`)  // To edit post
                 .then((res) => {
                     const postDetails = res.data.data;
                     if (postDetails.owner[0]?._id !== user._id) {
@@ -57,7 +57,7 @@ export default function PostConfig() {
     const config = () => {
         if (editMode) {
             if (content !== currContent) {
-                axios.post(`https://streamnest-3hxb.onrender.com/api/post/${postId}`, { content })
+                axios.post(`/api/post/${postId}`, { content })
                     .then(res => {
                         setTimeout(() => {
                             showCustomAlert("Post edited");
@@ -72,7 +72,7 @@ export default function PostConfig() {
 
         else {
             if (!content || content.trim()) {
-                axios.post(`https://streamnest-3hxb.onrender.com/api/post/new`, { content })
+                axios.post(`/api/post/new`, { content })
                     .then(res => {
                         setTimeout(() => {
                             showCustomAlert("Post created");

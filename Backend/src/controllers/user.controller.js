@@ -106,7 +106,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 }
 
 // Cookies cannot be accessed by client-side scriptsand are sent by HTTPS only 
-const options = { sameSite: 'None' }
+const options = { httpOnly: true, secure: true, sameSite: 'None' }
 
 // Login and Logout using Postman vscode extension DOESN'T SEND COOKIES! Use Postman application!!
 const loginUser = asyncHandler(async (req, res) => {

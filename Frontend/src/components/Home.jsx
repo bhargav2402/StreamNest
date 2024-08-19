@@ -19,7 +19,7 @@ export default function Home() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        axios.get(`https://streamnest-3hxb.onrender.com/api/video/${search ? `${search}&` : "?"}page=${page}`)      // search query then /?query=abc&page=1 else /?page=1
+        axios.get(`/api/video/${search ? `${search}&` : "?"}page=${page}`)      // search query then /?query=abc&page=1 else /?page=1
             .then(res => {
                 setVideos(res.data.data.videos)
                 setTotal(res.data.data.total[0].total)
